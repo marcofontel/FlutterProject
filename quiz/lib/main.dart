@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import './questao.dart';
 
 main() => runApp(new PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+  var _perguntaSelecionada = 0;
   final perguntas = [
     'Qual é a sua cor favorita?',
     'Qual é o seu animal favorito?'
   ];
   void _responder() {
-    perguntaSelecionada++;
-    print(perguntaSelecionada);
+    setState(() {
+      _perguntaSelecionada++;
+      print(_perguntaSelecionada);
+    });
   }
 
   @override
@@ -20,7 +23,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
         appBar: AppBar(title: Text('Perguntas')),
         body: Column(
           children: [
-            Text(perguntas[perguntaSelecionada]),
+            Questao(perguntas[_perguntaSelecionada]),
             ElevatedButton(
               child: Text('Resposta 1'),
               onPressed: _responder,
