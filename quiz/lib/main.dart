@@ -29,9 +29,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
   List<Widget> listaResp = [];
   @override
   Widget build(BuildContext context) {
-    for (String a in perguntas[_perguntaSelecionada]['respostas'] as List) {
-      listaResp.add(Resposta(a, _responder));
-    }
+    var respostas = perguntas[_perguntaSelecionada]['respostas'];
+
+    listaResp.map((e) => Resposta(e.toString(), _responder)).toList();
 
     return MaterialApp(
       home: Scaffold(
