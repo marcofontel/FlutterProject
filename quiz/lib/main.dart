@@ -26,20 +26,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
-  List<Widget> listaResp = [];
   @override
   Widget build(BuildContext context) {
-    var respostas = perguntas[_perguntaSelecionada]['respostas'];
-
-    listaResp.map((e) => Resposta(e.toString(), _responder)).toList();
+    var respostas = perguntas[_perguntaSelecionada]['respostas'] as List;
+    var quest = perguntas[_perguntaSelecionada]['texto'];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Perguntas')),
         body: Column(
           children: [
-            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            ...listaResp
+            Questao(quest.toString()),
+            ...respostas.map((e) => Resposta(e.toString(), _responder))
           ],
         ),
       ),
