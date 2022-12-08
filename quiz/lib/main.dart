@@ -26,17 +26,20 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
+  List<Widget> listaResp = [];
   @override
   Widget build(BuildContext context) {
+    for (String a in perguntas[_perguntaSelecionada]['respostas'] as List) {
+      listaResp.add(Resposta(a, _responder));
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Perguntas')),
         body: Column(
           children: [
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            Resposta("Resposta 1", _responder),
-            Resposta("Resposta 2", _responder),
-            Resposta("Resposta 3", _responder)
+            ...listaResp
           ],
         ),
       ),
@@ -47,6 +50,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
 class PerguntaApp extends StatefulWidget {
   const PerguntaApp({super.key});
 
+  @override
+  // ignore: library_private_types_in_public_api
   _PerguntaAppState createState() {
     return _PerguntaAppState();
   }
