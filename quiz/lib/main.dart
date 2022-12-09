@@ -60,8 +60,15 @@ class _PerguntaAppState extends State<PerguntaApp> {
               perguntaSelecionada: _perguntaSelecionada,
               responder: _responder,
             )
-          : Resultado(_pontuacaoTotal),
+          : Resultado(_pontuacaoTotal, _reinicarQuiz),
     ));
+  }
+
+  void _reinicarQuiz() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
   }
 }
 
