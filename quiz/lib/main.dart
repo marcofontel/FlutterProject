@@ -29,10 +29,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
     {
       "texto": "Qual é o seu instrutor favorito",
       "respostas": [
-        {'texto': 'Manoel', 'pontuacao': 11},
-        {'texto': 'Raimundo', 'pontuacao': 21},
-        {'texto': 'Rodrigo', 'pontuacao': 31},
-        {'texto': 'Romario', 'pontuacao': 41},
+        {'texto': 'Manoel', 'pontuacao': 10},
+        {'texto': 'Raimundo', 'pontuacao': 20},
+        {'texto': 'Rodrigo', 'pontuacao': 30},
+        {'texto': 'Romario', 'pontuacao': 40},
       ],
     }
   ];
@@ -47,8 +47,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
         _pontuacaoTotal += pontuacao;
       });
     }
-    print("Total");
-    print(_pontuacaoTotal);
   }
 
   @override
@@ -62,7 +60,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
               perguntaSelecionada: _perguntaSelecionada,
               responder: _responder,
             )
-          : Resultado(),
+          : Resultado(_pontuacaoTotal),
     ));
   }
 }
