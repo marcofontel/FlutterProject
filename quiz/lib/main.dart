@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/questionario.dart';
 import 'package:quiz/resultado.dart';
-import './questao.dart';
-import './resposta.dart';
 
 main() => runApp(new PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
-  final List<Map> _perguntas = const [
+  final List<Map<String, Object>> _perguntas = const [
     {
       "texto": "Qual sua cor favorita:",
       "respostas": ['Vermelho', 'Rosa', 'Roxo', 'Amarelo'],
@@ -21,6 +20,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
       "respostas": ['Manoel', 'Raimundo', 'Rodrigo', 'Romario'],
     }
   ];
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   void _responder() {
     if (temPerguntaSelecionada) {
       setState(() {
@@ -29,32 +32,19 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   }
 
-  bool get temPerguntaSelecionada {
-    return _perguntaSelecionada < _perguntas.length;
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? _perguntas[_perguntaSelecionada]['respostas'] as List<String>
-        : [];
-
-    var quest = _perguntas[_perguntaSelecionada]['texto'];
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Perguntas')),
-        body: temPerguntaSelecionada
-            ? Column(
-                children: [
-                  Questao(quest.toString()),
-                  ...respostas
-                      .map((e) => Resposta(e.toString(), _responder))
-                      .toList()
-                ],
-              )
-            : Resultado(),
-      ),
-    );
+        home: Scaffold(
+      appBar: AppBar(title: const Text('Perguntas')),
+      body: temPerguntaSelecionada
+          ? Questionario(
+              perguntas: _perguntas,
+              perguntaSelecionada: _perguntaSelecionada,
+              responder: _responder,
+            )
+          : Resultado(),
+    ));
   }
 }
 
