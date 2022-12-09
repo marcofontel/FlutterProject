@@ -9,7 +9,7 @@ class Questionario extends StatelessWidget {
   final List<Map<String, Object>> perguntas;
   final int perguntaSelecionada;
 
-  final void Function() responder;
+  final void Function(int) responder;
   Questionario({
     required this.perguntas,
     required this.perguntaSelecionada,
@@ -31,7 +31,8 @@ class Questionario extends StatelessWidget {
       children: [
         Questao(perguntas[perguntaSelecionada]['texto'].toString()),
         ...respostas
-            .map((e) => Resposta(e['texto'].toString(), responder))
+            .map((e) => Resposta(e['texto'].toString(),
+                (() => responder(int.parse(e['pontuacao'].toString())))))
             .toList()
       ],
     );
