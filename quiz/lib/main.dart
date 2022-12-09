@@ -9,7 +9,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   var _pontuacaoTotal = 0;
   final List<Map<String, Object>> _perguntas = const [
     {
-      "texto": "Qual sua cor favorita:",
+      "texto": "Qual sua cor favorita?",
       "respostas": [
         {'texto': 'Vermelho', 'pontuacao': 10},
         {'texto': 'Rosa', 'pontuacao': 20},
@@ -53,7 +53,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: const Text('Perguntas')),
+      appBar: AppBar(
+          title: const Text(
+        'Perguntas para o Ian',
+      )),
       body: temPerguntaSelecionada
           ? Questionario(
               perguntas: _perguntas,

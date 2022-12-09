@@ -10,11 +10,11 @@ class Resultado extends StatelessWidget {
 
   String get mensagemResultado {
     if (pontuacao < 40) {
-      return 'Parabéns!!';
-    } else if (pontuacao > 50) {
-      return 'Você é fera mesmo oh macho';
+      return 'Parabéns você fez ${pontuacao} pontos. \n       Mas melhore, Ta bom?';
+    } else if (pontuacao < 50) {
+      return '            Fez ${pontuacao} pontos? \n   Tu é fera mesmo oh macho';
     } else {
-      return "Valeu viado...";
+      return "Valeu viado... ${pontuacao} pontos";
     }
   }
 
@@ -26,11 +26,11 @@ class Resultado extends StatelessWidget {
         Center(
           child: Text(
             mensagemResultado,
-            style: TextStyle(fontSize: 28),
+            style: TextStyle(fontSize: 18),
           ),
         ),
         FloatingActionButton.large(
-          child: Text('Reiniciar'),
+          child: Text('Bora'),
           onPressed: reiniciarQuiz,
         ),
       ],
