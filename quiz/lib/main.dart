@@ -9,15 +9,30 @@ class _PerguntaAppState extends State<PerguntaApp> {
   final List<Map<String, Object>> _perguntas = const [
     {
       "texto": "Qual sua cor favorita:",
-      "respostas": ['Vermelho', 'Rosa', 'Roxo', 'Amarelo'],
+      "respostas": [
+        {'texto': 'Vermelho', 'nota': 10},
+        {'texto': 'Rosa', 'nota': 23},
+        {'texto': 'Roxo', 'nota': 34},
+        {'texto': 'Amarelo', 'nota': 47},
+      ],
     },
     {
       "texto": "Qual é o seu animal favorito",
-      "respostas": ['Coelho', 'Cobra', 'Morcego', 'Macaco'],
+      "respostas": [
+        {'texto': 'Coelho', 'nota': 10},
+        {'texto': 'Cobra', 'nota': 21},
+        {'texto': 'Morcego', 'nota': 33},
+        {'texto': 'Macaco', 'nota': 46},
+      ],
     },
     {
       "texto": "Qual é o seu instrutor favorito",
-      "respostas": ['Manoel', 'Raimundo', 'Rodrigo', 'Romario'],
+      "respostas": [
+        {'texto': 'Manoel', 'nota': 11},
+        {'texto': 'Raimundo', 'nota': 21},
+        {'texto': 'Rodrigo', 'nota': 31},
+        {'texto': 'Romario', 'nota': 41},
+      ],
     }
   ];
   bool get temPerguntaSelecionada {
