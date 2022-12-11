@@ -30,12 +30,13 @@ class MyHomePage extends StatelessWidget {
     )
   ];
   Widget build(BuildContext context) {
+    final ButtonStyle styleElevatedButton = ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 20, color: Colors.purple));
     return Scaffold(
         appBar: AppBar(
           title: Text('Despesas Pessoais'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -94,6 +95,36 @@ class MyHomePage extends StatelessWidget {
                   ),
                 );
               }).toList(),
+            ),
+            Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Título',
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Valor (R\$)',
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: styleElevatedButton,
+                          onPressed: () {},
+                          child: Text('Nova Transação'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             )
           ],
         ));
