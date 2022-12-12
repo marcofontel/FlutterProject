@@ -24,42 +24,6 @@ class _TransactionUser extends State<TransactionUser> {
       value: 310.76,
       date: DateTime.now().toLocal(),
     ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
   ];
 
   _addTransaction(String title, double value) {
