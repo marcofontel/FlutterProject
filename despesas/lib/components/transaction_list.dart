@@ -1,6 +1,4 @@
 import 'package:despesas/models/transaction.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
 import 'package:intl/intl.dart';
@@ -14,8 +12,10 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView(
-        children: _transactions.map((e) {
+      child: ListView.builder(
+        itemCount: _transactions.length,
+        itemBuilder: (ctx, index) {
+          final e = _transactions[index];
           return Card(
             child: Row(
               children: <Widget>[
@@ -61,7 +61,7 @@ class TransactionList extends StatelessWidget {
               ],
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }
