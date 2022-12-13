@@ -16,6 +16,7 @@ class DespesasApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber[700],
+        fontFamily: 'Quicksand',
       ),
     );
   }
@@ -67,7 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Despesas Pessoais'),
+        title: Text(
+          'Despesas Pessoais',
+          style: TextStyle(
+            fontFamily: 'OpenSans',
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () => _openTransactionFormModal(context),
