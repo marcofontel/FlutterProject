@@ -16,7 +16,27 @@ class DespesasApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber[700],
-        fontFamily: 'Quicksand',
+        fontFamily: 'OpenSans',
+        appBarTheme: AppBarTheme(
+          toolbarTextStyle: ThemeData.light()
+              .textTheme
+              .copyWith(
+                titleLarge: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontWeight: FontWeight.w100,
+                ),
+              )
+              .bodyText2,
+          titleTextStyle: ThemeData.light()
+              .textTheme
+              .copyWith(
+                titleLarge: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.w700,
+                ),
+              )
+              .headline6,
+        ),
       ),
     );
   }
@@ -28,19 +48,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
-    Transaction(
-      id: Random().nextDouble().toString(),
-      title: 'Teste',
-      value: 310.76,
-      date: DateTime.now().toLocal(),
-    ),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    //   id: Random().nextDouble().toString(),
+    //   title: 'Teste',
+    //   value: 310.76,
+    //   date: DateTime.now().toLocal(),
+    // ),
+    // Transaction(
+    //   id: Random().nextDouble().toString(),
+    //   title: 'Teste',
+    //   value: 310.76,
+    //   date: DateTime.now().toLocal(),
+    // ),
   ];
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
@@ -70,9 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(
           'Despesas Pessoais',
-          style: TextStyle(
-            fontFamily: 'OpenSans',
-          ),
         ),
         actions: <Widget>[
           IconButton(
