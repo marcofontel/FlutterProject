@@ -12,7 +12,7 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
-  List<Map<String, Object>> get groupedTransactios {
+  List<Map<String, dynamic>> get groupedTransactios {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(
         Duration(days: index),
@@ -43,11 +43,11 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
-        children: groupedTransactios.map((e) {
+        children: groupedTransactios.map((t) {
           return ChartBar(
-            label: e['day'].toString(),
-            value: double.parse(e['value'].toString().characters.string),
-            percentage: 0.0,
+            label: t['day'],
+            value: t['value'],
+            percentage: 0.5,
           );
         }).toList(),
       ),

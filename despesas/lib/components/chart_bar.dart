@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -15,22 +16,45 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text('R\$ ${value.toStringAsFixed(2)}'),
-        SizedBox(
-          height: 5,
-        ),
-        Container(
-          height: 70,
-          width: 10,
-          child: null,
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(label),
-      ],
+    return Flexible(
+      child: Column(
+        children: <Widget>[
+          Text('${value.toStringAsFixed(2)}'),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            height: 60,
+            width: 10,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1.0,
+                    ),
+                    color: Color.fromRGBO(220, 220, 220, 1),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FractionallySizedBox(
+            widthFactor: 1.10,
+            //heightFactor: percentage,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+          ),
+          Text(label),
+        ],
+      ),
     );
   }
 }
