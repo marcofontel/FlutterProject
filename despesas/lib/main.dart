@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:despesas/components/chart.dart';
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 import 'components/transaction_form.dart';
@@ -48,7 +49,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [];
+  final List<Transaction> _transactions = [
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: 'Conta antiga',
+      value: 10.93,
+      date: DateTime.now().subtract(Duration(days: 33)),
+    ),
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: 'Camisa do Timão',
+      value: 993.23,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: Random().nextDouble().toString(),
+      title: 'Novo Tenis',
+      value: 310.76,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
+  ];
+  List<Transaction> get _recentTransaction {
+    return _transactions.where((t) {
+      return t.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
+
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -89,14 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text("Gráfico"),
-                elevation: 15,
-              ),
-            ),
+            Chart(_recentTransaction),
             TransactionList(_transactions),
           ],
         ),
