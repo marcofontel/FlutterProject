@@ -36,20 +36,32 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get _weekTotalValue {
+    return groupedTransactios.fold(0.0, (sum, tr) {
+      return sum + tr['value'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    groupedTransactios;
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactios.map((t) {
-          return ChartBar(
-            label: t['day'],
-            value: t['value'],
-            percentage: 0.5,
-          );
-        }).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactios.map((t) {
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                label: t['day'] as String,
+                value: t['value'] as double,
+                percentage: (t['value'] as double) / _weekTotalValue,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
