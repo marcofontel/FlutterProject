@@ -15,11 +15,11 @@ class DespesasApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(),
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.amber,
         accentColor: Colors.amber[700],
         fontFamily: 'OpenSans',
         appBarTheme: AppBarTheme(
-          toolbarTextStyle: ThemeData.light()
+          toolbarTextStyle: ThemeData.dark()
               .textTheme
               .copyWith(
                 titleLarge: TextStyle(
@@ -28,7 +28,7 @@ class DespesasApp extends StatelessWidget {
                 ),
               )
               .bodyText2,
-          titleTextStyle: ThemeData.light()
+          titleTextStyle: ThemeData.dark()
               .textTheme
               .copyWith(
                 titleLarge: TextStyle(
