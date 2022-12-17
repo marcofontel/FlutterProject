@@ -136,36 +136,38 @@ class _MyHomePageState extends State<MyHomePage> {
     final _availableHeight = MediaQuery.of(context).size.height -
         _appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
-    final bodyPage = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (_isLandScape)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Exibir Gráfico'),
-                Switch(
-                  value: _showChart,
-                  onChanged: (value) {
-                    setState(() {
-                      _showChart = value;
-                    });
-                  },
-                ),
-              ],
-            ),
-          if (_showChart || !_isLandScape)
-            Container(
-              height: _availableHeight * (_isLandScape ? 0.7 : 0.3),
-              child: Chart(_recentTransaction),
-            ),
-          if (!_showChart || !_isLandScape)
-            Container(
-              height: _availableHeight * (_isLandScape ? 0.1 : 0.7),
-              child: TransactionList(_transactions, _removeTransaction),
-            ),
-        ],
+    final bodyPage = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            if (_isLandScape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Exibir Gráfico'),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            if (_showChart || !_isLandScape)
+              Container(
+                height: _availableHeight * (_isLandScape ? 0.7 : 0.3),
+                child: Chart(_recentTransaction),
+              ),
+            if (!_showChart || !_isLandScape)
+              Container(
+                height: _availableHeight * (_isLandScape ? 0.1 : 0.7),
+                child: TransactionList(_transactions, _removeTransaction),
+              ),
+          ],
+        ),
       ),
     );
     return Platform.isIOS
