@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'adaptative_button.dart';
+import 'adaptative_textfield.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -48,6 +49,9 @@ class _TransactionFormState extends State<TransactionForm> {
   final ButtonStyle styleElevatedButton = ElevatedButton.styleFrom(
     textStyle: const TextStyle(fontSize: 20, color: Colors.purple),
   );
+  final textType = InputDecoration(
+    labelText: 'Valor (R\$)',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +70,14 @@ class _TransactionFormState extends State<TransactionForm> {
               TextField(
                 controller: _titleController,
                 decoration: InputDecoration(
-                  labelText: 'Título',
+                  labelText: 'Titulo',
                 ),
               ),
-              TextField(
-                controller: _valueController,
-                onSubmitted: (_) => _onPress(),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(
-                  labelText: 'Valor (R\$)',
-                ),
+              AdaptativeTextField(
+                'Valor (R\$)',
+                _valueController,
+                const TextInputType.numberWithOptions(decimal: true),
+                _onPress(),
               ),
               Container(
                 height: 70,
