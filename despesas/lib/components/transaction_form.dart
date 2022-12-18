@@ -30,23 +30,6 @@ class _TransactionFormState extends State<TransactionForm> {
     widget.onSubmit(title, value, _selectedDate);
   }
 
-  _showDatePicker() {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime.now(),
-    ).then((pickedDate) {
-      if (pickedDate == null) {
-        return;
-      } else {
-        setState(() {
-          _selectedDate = pickedDate;
-        });
-      }
-    });
-  }
-
   final ButtonStyle styleElevatedButton = ElevatedButton.styleFrom(
     textStyle: const TextStyle(fontSize: 20, color: Colors.purple),
   );
@@ -80,7 +63,11 @@ class _TransactionFormState extends State<TransactionForm> {
                 TextInputType.numberWithOptions(decimal: true),
                 (_) => _onPress(),
               ),
-              AdaptativeDatePicker(_selectedDate, _showDatePicker),
+              AdaptativeDatePicker(_selectedDate, (nd) {
+                setState(() {
+                  _selectedDate = nd;
+                });
+              }),
               Container(
                 height: 30,
                 child: Row(
