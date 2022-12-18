@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'adaptative_button.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -107,18 +108,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(
-                      style: styleElevatedButton,
-                      onPressed: _onPress,
-                      child: Text(
-                        'Salvar Transação',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).cardColor,
-                        ),
-                      ),
-                    ),
+                    AdaptativeButton('Salvar', _onPress),
                   ],
                 ),
               )
