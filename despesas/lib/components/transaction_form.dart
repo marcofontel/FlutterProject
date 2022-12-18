@@ -1,3 +1,4 @@
+import 'package:despesas/components/adaptative_date_picker.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -67,44 +68,19 @@ class _TransactionFormState extends State<TransactionForm> {
           ),
           child: Column(
             children: <Widget>[
-              TextField(
-                controller: _titleController,
-                decoration: InputDecoration(
-                  labelText: 'Titulo',
-                ),
+              AdaptativeTextField(
+                'Título',
+                _titleController,
+                TextInputType.text,
+                (_) {},
               ),
               AdaptativeTextField(
                 'Valor (R\$)',
                 _valueController,
-                const TextInputType.numberWithOptions(decimal: true),
-                _onPress(),
+                TextInputType.numberWithOptions(decimal: true),
+                (_) => _onPress(),
               ),
-              Container(
-                height: 70,
-                child: Row(
-                  //                mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        _selectedDate == null
-                            ? ''
-                            : 'Data selecionada ${DateFormat('d/M/y').format(_selectedDate)}',
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _showDatePicker,
-                      child: Text(
-                        'Selecionar Data',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              AdaptativeDatePicker(_selectedDate, _showDatePicker),
               Container(
                 height: 30,
                 child: Row(
